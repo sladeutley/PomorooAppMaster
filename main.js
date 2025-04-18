@@ -260,7 +260,7 @@ function populateList(tasks = [], tasksList) {
             <span>&nbsp;&nbsp;</span>
             <input class="completed-checkbox" type="checkbox" name="completed-checkbox" data-index=${i} id="item${i}" ${task.done ? 'checked' : ''}/>
             <span>&nbsp;</span>
-            <label for="item${i}">${task.text}</label>
+            <label for="item${i}" class="${task.done ? 'completed' : ''}">${task.text}</label>
           </div>
           <div class="task-item" />
           <div class="task-item task-right">
@@ -271,6 +271,26 @@ function populateList(tasks = [], tasksList) {
       </div>
     `
   }).join('')
+
+  setupCheckboxListeners();
+}
+
+//NEW - Dev Aidan H - Event listener to update class for label text
+function setupCheckboxListeners() {
+  const checkboxes = document.querySelectorAll('.completed-checkbox');
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', (e) => {
+      const id = e.target.id;
+      const label = document.querySelector(`label[for="${id}"]`);
+
+      if (e.target.checked) {
+        label.classList.add('completed');
+      } else {
+        label.classList.remove('completed');
+      }
+    });
+  });
 }
 
 

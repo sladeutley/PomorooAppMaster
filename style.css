@@ -1129,6 +1129,12 @@ nav a {
 }
 /*#endregion*/
 
+/*NEW DEV AIDAN H*/
+.completed{
+  text-decoration: line-through;
+}
+/*#endregion*/
+
 /*#region - media queries*/
 @media screen and (max-width: 600px) {
   /* .controls .control {
